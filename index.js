@@ -7,9 +7,6 @@ http://10.6.3.127:8082/show
 var baseurl = "http://10.6.3.127:8082";
 
 function detect(){
-
-	//alert("detect");
-	
 	//finalize order
 	fetch(baseurl+"/api/v1/snapshot-detection/finalise-order", 
 		{
@@ -23,7 +20,6 @@ function detect(){
 }
 
 function detect2(){
-
 	//start order
 	fetch(baseurl+"/api/v1/snapshot-detection",
 	{
@@ -33,7 +29,6 @@ function detect2(){
 	.then(response => response.json())
 	.then(data => displayResults(data));
 }
-var mydata = {};
 
 function item2ListItem(item){
 	return "<div>"
@@ -139,4 +134,78 @@ function displayResults(json){
 	});
 }
 
+function dataTuple(max){
+	var produced = 5 + myrand(max);
+	var consumed = Math.max(myrand(produced), produced/3);
+	var wasted = produced - consumed;
+	return [produced, consumed, wasted].map(x => Math.floor(x));
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  
+  tuples = [];
+  labels = [];
+  var j = 1;
+  for(var i=30; i > 25; i-= 0.2){
+  	var date = new Date("2021-10-"+j);
+  	tuples.push(dataTuple(i));
+  	labels.push(date.toString().substring(0,16));
+  	j++;
+  }
+  
+//const labels = [1,2,3,4,5,6,7];
+const mytension = 0.4;
+
+const data = {
+  labels: labels,
+  datasets: [
+  {
+    label: '# Food Items Wasted',
+    //data: [20, 15, 8, 17, 18, 3, 6],
+    data: tuples.map(t => t[2]),
+    fill: true,
+    borderColor: 'red',
+    tension: mytension
+  },
+  {
+    label: '# Consumed',
+    //data: [30, 16, 10, 20, 25, 14, 19],
+    data: tuples.map(t => t[1]),
+    fill: false,
+    borderColor: 'black',
+    tension: mytension
+  },
+  {
+    label: '# Produced',
+    //data: [50, 31, 18, 37, 43, 17, 25],
+    data: tuples.map(t => t[0]),
+    fill: false,
+    borderColor: 'orange',
+    tension: mytension
+  }
+  ]
+};
+
+const config = {
+  type: 'line',
+  data: data,
+  options: {
+      scales: {
+	      y: {
+		type: 'linear',
+		display: true,
+		position: 'left',
+		min: 0,
+		max: 50
+	      },
+      }
+  }
+};
+
+const myChart = new Chart(
+	document.getElementById('myChart'),
+	config
+);
+
 detect();
+});
