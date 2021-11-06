@@ -1,11 +1,11 @@
-
+var baseurl = "http://10.6.3.127:8082";
 
 function detect(){
 
 	//alert("detect");
 	
 	//finalize order
-	fetch("http://10.6.3.127:8082/api/v1/snapshot-detection/finalise-order", 
+	fetch(baseurl+"/api/v1/snapshot-detection/finalise-order", 
 		{
 			method: 'POST',
 			body: JSON.stringify({"status": "cancelled"})
@@ -19,7 +19,7 @@ function detect(){
 function detect2(){
 
 	//start order
-	fetch("http://10.6.3.127:8082/api/v1/snapshot-detection",
+	fetch(baseurl+"/api/v1/snapshot-detection",
 	{
 		method: 'POST',
 		body: JSON.stringify({})
@@ -47,6 +47,14 @@ function displayResults(json){
 	//options can be emtpy array
 	
 	labelmap = {};
-	
+	list = document.getElementById("list");
+	list.innerHTML = "";
 	//make a list of what was found with images
+	json.items.forEach(item => {
+	
+		list.innerHTML += "<div>"
+			+"<img src='"+baseurl+item.image_url+"'></img>"
+			+item.base_label
+			+"</div>"
+	});
 }
