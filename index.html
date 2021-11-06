@@ -16,13 +16,39 @@
 	
 		<h1 style="color: blue;">Buffet Tracker</h1>
 		
-		<p>Tracks what is still on the buffet at the end of the day,
-		to avoid waste</p>
+		<ul>
+			<li>Tracks what is still on the buffet at the end of the day,
+		to <strong>avoid waste</strong> and improve planning.</li>
+			<li>
+		The Kitchen can also use it to have live information
+		on the buffet and which items are running low.
+			</li>
+		</ul>
+		
 
 		<button onclick="detect()" class="btn btn-success">
 			>> Start Detection <<
 		</button>
 		<div class="p-3 m-1"></div>
+
+		<h3> Buffet Status: </h3>
+		
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">Item Picture</th>
+		      <th scope="col">Item Name</th>
+		      <th scope="col">Count</th>
+		    </tr>
+		  </thead>
+		  <tbody id="foodtable">
+		    <tr>
+		      <th scope="row">1</th>
+		      <td>Mark</td>
+		      <td>Otto</td>
+		    </tr>
+		  </tbody>
+		</table>
 
 		<ul id="list">
 		Click the Button to Track the Buffet

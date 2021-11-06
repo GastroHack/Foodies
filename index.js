@@ -29,6 +29,39 @@ function detect2(){
 }
 var mydata = {};
 
+function item2ListItem(item){
+	return "<div>"
+	+"<img src='"+baseurl+item.image_url+"'></img>"
+	+item.name
+	+countStr(item.count);
+	+"</div>"
+}
+
+function item2TableItem(item){
+
+	return "<tr>"
+		+"<td>"
+			+"<img src='"+baseurl+item.image_url+"'></img>"
+		+"</td>"
+		+"<td>"
+			+item.name
+		+"</td>"
+		+"<td>"
+		+countStr(item.count)
+		+"</td>"
+	+"</tr>"
+}
+
+function countStr(count){
+	var color = "black";
+	var extra = "";
+	if(count <= 1){
+		color = "red";
+		extra = " (running low!!)";
+	}
+	return "<strong style='color:"+color+";'>"+count+extra+"</strong>";
+}
+
 function displayResults(json){
 
 	console.log("displayResults");
@@ -50,8 +83,10 @@ function displayResults(json){
 	
 	labelmap = {};
 	
-	list = document.getElementById("list");
+	list  = document.getElementById("list");
+	table = document.getElementById("foodtable"); 
 	list.innerHTML = "";
+	table.innerHTML = "";
 	//make a list of what was found with images
 	json.items.forEach(item => {
 	
@@ -73,11 +108,8 @@ function displayResults(json){
 	});
 	
 	Object.keys(labelmap).map(key => labelmap[key]).forEach(item => {
-		list.innerHTML += "<div>"
-			+"<img src='"+baseurl+item.image_url+"'></img>"
-			+item.name
-			+"<strong>"+item.count+"</strong>"
-			+"</div>"
+		//list.innerHTML += item2ListItem(item);
+		table.innerHTML += item2TableItem(item);
 	});
 }
 
