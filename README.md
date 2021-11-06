@@ -2,7 +2,7 @@
 
 ## Team Members
 - Andrey
-- Kiri
+- Kira
 - Venetia
 - Viviane
 - Alexander
