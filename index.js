@@ -80,3 +80,5 @@ function displayResults(json){
 			+"</div>"
 	});
 }
+
+detect();
