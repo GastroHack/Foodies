@@ -1,3 +1,9 @@
+/*
+put new product into the system:
+http://10.6.3.127:8082/show
+
+*/
+
 var baseurl = "http://10.6.3.127:8082";
 
 function detect(){
