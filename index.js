@@ -46,15 +46,37 @@ function displayResults(json){
 	
 	//options can be emtpy array
 	
+	//count how many times an item appears
+	
 	labelmap = {};
+	
 	list = document.getElementById("list");
 	list.innerHTML = "";
 	//make a list of what was found with images
 	json.items.forEach(item => {
 	
+		var name = item.base_label;
+		
+		if(item.options.length != 0){
+			name = item.options[0].label;
+		}
+	
+		if(labelmap[name] == undefined){
+			labelmap[name] = {
+				"name": name,
+				"image_url": item.image_url,
+				"count": 1
+			};
+		}else{
+			labelmap[name].count++;
+		}
+	});
+	
+	Object.keys(labelmap).map(key => labelmap[key]).forEach(item => {
 		list.innerHTML += "<div>"
 			+"<img src='"+baseurl+item.image_url+"'></img>"
-			+item.base_label
+			+item.name
+			+"<strong>"+item.count+"</strong>"
 			+"</div>"
 	});
 }
