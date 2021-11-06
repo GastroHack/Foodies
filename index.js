@@ -48,6 +48,16 @@ function td(str){
 function myrand(max){
 	return Math.floor(Math.random()*max);
 }
+function capitalize(word) {
+  const lower = word.toLowerCase();
+  return word.charAt(0).toUpperCase() + lower.slice(1);
+}
+
+function beautifyItemName(name){
+	var parts = name.split(".");
+	if(parts.length != 3){return name;}
+	return capitalize(parts[1])+" "+capitalize(parts[2]);
+}
 function item2TableItem(item){
 
 	var eaten_today = myrand(5);
@@ -60,7 +70,7 @@ function item2TableItem(item){
 
 	return "<tr>"
 		+td("<img src='"+baseurl+item.image_url+"'></img>")
-		+td(item.name)
+		+td(beautifyItemName(item.name))
 		+td(countStr(item.count))
 		+td(eaten_today)
 		+td(eaten_avg)
