@@ -17,19 +17,19 @@
 		<h1 style="color: blue;">Buffet Tracker</h1>
 		
 		<ul>
-			<li>Tracks what is still on the buffet at the end of the day,
-		to <strong>avoid waste</strong> and improve planning.</li>
 			<li>
-		The Kitchen can also use it to have live information
-		on the buffet and which items are running low.
+				Tracks what is still on the buffet at the end of the day,
+		to <strong>avoid future waste</strong> and improve planning.</li>
+			<li>
+				Live Information for the <strong>Kitchen</strong> on the Buffet Status.
 			</li>
 		</ul>
 		
 		<div class="row justify-content-left ">
 		
-			<div class="col-md-2">
+			<div class="col-md-3">
 			<button onclick="detect()" class="btn btn-success">
-				>> Start Detection <<
+				>> Trigger Detection <<
 			</button>
 			</div>
 			<div class="col-md-2">
@@ -50,6 +50,9 @@ http://10.6.3.127:8082/show"><button class="btn btn-secondary">
 		      <th scope="col">Item Picture</th>
 		      <th scope="col">Item Name</th>
 		      <th scope="col">Count</th>
+		      <th scope="col"># Consumed today</th>
+		      <th scope="col"># Consumed on average</th>
+		      <th scope="col"># Recommended to make</th>
 		    </tr>
 		  </thead>
 		  <tbody id="foodtable">
@@ -57,6 +60,8 @@ http://10.6.3.127:8082/show"><button class="btn btn-secondary">
 		      <th scope="row">1</th>
 		      <td>Mark</td>
 		      <td>Otto</td>
+		      <td> 3 </td>
+		      <td> 4 </td>
 		    </tr>
 		  </tbody>
 		</table>

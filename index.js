@@ -42,19 +42,29 @@ function item2ListItem(item){
 	+countStr(item.count);
 	+"</div>"
 }
-
+function td(str){
+	return "<td>"+str+"</td>";
+}
+function myrand(max){
+	return Math.floor(Math.random()*max);
+}
 function item2TableItem(item){
 
+	var eaten_today = myrand(5);
+	var eaten_avg   = myrand(7);
+	
+	var recommend   = (eaten_avg - eaten_today) - item.count;
+	if(recommend < 0){recommend = 0;}
+	
+	if(recommend == 0){ recommend = ""; }
+
 	return "<tr>"
-		+"<td>"
-			+"<img src='"+baseurl+item.image_url+"'></img>"
-		+"</td>"
-		+"<td>"
-			+item.name
-		+"</td>"
-		+"<td>"
-		+countStr(item.count)
-		+"</td>"
+		+td("<img src='"+baseurl+item.image_url+"'></img>")
+		+td(item.name)
+		+td(countStr(item.count))
+		+td(eaten_today)
+		+td(eaten_avg)
+		+td(recommend)
 	+"</tr>"
 }
 
