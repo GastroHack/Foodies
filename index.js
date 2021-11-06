@@ -143,53 +143,67 @@ function dataTuple(max){
 
 document.addEventListener("DOMContentLoaded", function() {
   
-  tuples = [];
-  labels = [];
-  var j = 1;
-  for(var i=30; i > 25; i-= 0.2){
-  	var date = new Date("2021-10-"+j);
-  	tuples.push(dataTuple(i));
-  	labels.push(date.toString().substring(0,16));
-  	j++;
-  }
-  
-//const labels = [1,2,3,4,5,6,7];
-const mytension = 0.4;
+	tuples = [];
+	labels = [];
+	var j = 1;
+	for(var i=30; i > 25; i-= 0.2){
+		var date = new Date("2021-10-"+j);
+		tuples.push(dataTuple(i));
+		labels.push(date.toString().substring(0,16));
+		j++;
+	}
+	
+	var json = JSON.parse(plot_data);
+	console.log(json);
+	
+	labels = [];
+	for(var i=1; i <= 28; i++){ 
+		var date = new Date("2021-10-"+i);
+		labels.push(date.toString().substring(0,16)); 
+	}
+	
 
-const data = {
-  labels: labels,
-  datasets: [
-  {
-    label: '# Food Items Wasted',
-    //data: [20, 15, 8, 17, 18, 3, 6],
-    data: tuples.map(t => t[2]),
-    fill: true,
-    borderColor: 'red',
-    tension: mytension
-  },
-  {
-    label: '# Consumed',
-    //data: [30, 16, 10, 20, 25, 14, 19],
-    data: tuples.map(t => t[1]),
-    fill: false,
-    borderColor: 'black',
-    tension: mytension
-  },
-  {
-    label: '# Produced',
-    //data: [50, 31, 18, 37, 43, 17, 25],
-    data: tuples.map(t => t[0]),
-    fill: false,
-    borderColor: 'orange',
-    tension: mytension
-  }
-  ]
-};
+	//const labels = [1,2,3,4,5,6,7];
+	const mytension = 0.4;
+
+	const data = {
+	labels: labels,
+	datasets: [
+		{
+		label: '# Food Items Wasted',
+		//data: [20, 15, 8, 17, 18, 3, 6],
+		//data: tuples.map(t => t[2]),
+		data: Object.keys(json.wasted).map(key => json.wasted[key]),
+		fill: true,
+		borderColor: 'red',
+		tension: mytension
+		},
+		{
+		label: '# Consumed',
+		//data: [30, 16, 10, 20, 25, 14, 19],
+		//data: tuples.map(t => t[1]),
+		data: Object.keys(json.consumed).map(key => json.consumed[key]),
+		fill: false,
+		borderColor: 'black',
+		tension: mytension
+		},
+		{
+		label: '# Produced',
+		//data: [50, 31, 18, 37, 43, 17, 25],
+		//data: tuples.map(t => t[0]),
+		data: Object.keys(json.produced).map(key => json.produced[key]),
+		fill: false,
+		borderColor: 'orange',
+		tension: mytension
+		}
+	]
+	};
 
 const config = {
   type: 'line',
   data: data,
   options: {
+  	/*
       scales: {
 	      y: {
 		type: 'linear',
@@ -199,6 +213,7 @@ const config = {
 		max: 50
 	      },
       }
+      */
   }
 };
 
