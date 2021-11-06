@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /var/www/html
-git pull
+sudo cd /var/www/html
+sudo git pull
