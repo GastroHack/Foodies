@@ -1,8 +1,8 @@
-# Foodies
+# Foodies: Green Buffet project
 
 ## Team Members
 - Andrey
-- Kiri
+- Kira
 - Venetia
 - Viviane
 - Alexander
