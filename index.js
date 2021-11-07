@@ -30,6 +30,15 @@ function detect2(){
 	.then(data => displayResults(data));
 }
 
+function toggleLiveView(){
+	var view = document.getElementById("liveView");
+	if(view.style.display == 'none'){
+		view.style.display = 'block';
+	}else{
+		view.style.display = 'none';
+	}
+}
+
 function item2ListItem(item){
 	return "<div>"
 	+"<img src='"+baseurl+item.image_url+"'></img>"
