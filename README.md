@@ -38,6 +38,12 @@ http://194.182.171.170/
 - We learned about the 2 stage classification in the Dishtracker
   and how to register new food items with the correct prefix.
 
+- The database will be recorded by Dishtracker (history of consumption)
+- Database processing
+  - pandas
+  - numpy (calculating statistics)
+  - xgboost (predictions)
+
 ## Acknowledgements
 
 - Alex from Dishtracker helped us with the Setup - thank you 
