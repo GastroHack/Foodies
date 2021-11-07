@@ -42,9 +42,58 @@ http://10.6.3.127:8082/show"><button class="btn btn-secondary">
 		</div>
 		<div class="p-3 m-1"></div>
 
-		<h3> Live Buffet Status: </h3>
+		<button onclick="toggleFake()">
+			<h3>Live Buffet Status: </h3>
+		</button>
 		
-		<table class="table">
+		<table style="display:none;" id="faketable" class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">Item Picture</th>
+		      <th scope="col">Item Name</th>
+		      <th scope="col">Count</th>
+		      <th scope="col"># Consumed today</th>
+		      <th scope="col"># Predicted Consumption for Today</th>
+		      <th scope="col"># Recommended to make</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <td><img style="width:10rem;" src="img/piece1.jpg"/></th>
+		      <td>Bread</td>
+		      <td> 2 </td>
+		      <td> 3 </td>
+		      <td> 4 </td>
+		      <td> 0 </td>
+		    </tr>
+		    <tr>
+		      <td><img style="width:10rem;" src="img/piece2.jpg"/></th>
+		      <td>Milk</td>
+		      <td> 1 (running low!!)</td>
+		      <td> 3 </td>
+		      <td> 4 </td>
+		      <td> 0 </td>
+		    </tr>
+		    <tr>
+		      <td><img style="width:10rem;" src="img/piece3.jpg"/></th>
+		      <td>Belegtes Brot</td>
+		      <td> 2 </td>
+		      <td> 1 </td>
+		      <td> 4 </td>
+		      <td> 1 </td>
+		    </tr>
+		    <tr>
+		      <td><img style="width:10rem;" src="img/piece4.jpg"/></th>
+		      <td>Croissant</td>
+		      <td> 1 </td>
+		      <td> 1 </td>
+		      <td> 2 </td>
+		      <td> 0 </td>
+		    </tr>
+		  </tbody>
+		</table>
+		
+		<table id="realtable" class="table">
 		  <thead>
 		    <tr>
 		      <th scope="col">Item Picture</th>
@@ -56,13 +105,6 @@ http://10.6.3.127:8082/show"><button class="btn btn-secondary">
 		    </tr>
 		  </thead>
 		  <tbody id="foodtable">
-		    <tr>
-		      <th scope="row">1</th>
-		      <td>Mark</td>
-		      <td>Otto</td>
-		      <td> 3 </td>
-		      <td> 4 </td>
-		    </tr>
 		  </tbody>
 		</table>
 

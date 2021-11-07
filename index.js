@@ -39,6 +39,19 @@ function toggleLiveView(){
 	}
 }
 
+function toggleFake(){
+	var faketable = document.getElementById("faketable");
+	var realtable = document.getElementById("realtable");
+	
+	if(faketable.style.display == 'none'){
+		faketable.style.display = 'block';
+		realtable.style.display = 'none';
+	}else{
+		faketable.style.display = 'none';
+		realtable.style.display = 'block';
+	}
+}
+
 function item2ListItem(item){
 	return "<div>"
 	+"<img src='"+baseurl+item.image_url+"'></img>"
