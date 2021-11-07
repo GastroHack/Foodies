@@ -13,6 +13,7 @@
 
 Website:
 http://194.182.171.170/
+(Firefox is recommended)
 
 ## Detailed Solution Architecture 
 
